@@ -1,0 +1,29 @@
+{
+  "name": "test-public-codegen-two-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/test-public-codegen-two-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test-public-codegen-two-e2e/cypress.json",
+        "devServerTarget": "test-public-codegen-two:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "test-public-codegen-two:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/test-public-codegen-two-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["test-public-codegen-two"]
+}
